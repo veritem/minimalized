@@ -1,15 +1,44 @@
-import React, { FC, HTMLAttributes, ReactChild } from 'react';
+import React, {
+  FC,
+  HTMLAttributes,
+  ReactChild,
+  ReactPortal,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
+import { createPortal } from 'react-dom';
 
-export interface Props extends HTMLAttributes<HTMLDivElement> {
-  /** custom content, defaults to 'the snozzberries taste like snozzberries' */
-  children?: ReactChild;
+interface Props {
+  children: JSX.Element;
+  open: boolean;
+  close: () => void;
 }
 
-// Please do not use types off of a default export module or else Storybook Docs will suffer.
-// see: https://github.com/storybookjs/storybook/issues/9556
-/**
- * A custom Thing component. Neat!
- */
-export const Thing: FC<Props> = ({ children }) => {
-  return <div>{children || `the snozzberries taste like snozzberries`}</div>;
+export function ClientPortal({
+  children,
+}: {
+  children: JSX.Element;
+}): ReactPortal | null {
+  const ref = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    ref.current = document.querySelector('#__next');
+    setMounted(true);
+  }, []);
+
+  return mounted ? createPortal(children, ref.current) : null;
+}
+
+export const Minimalized: FC<Props> = ({
+  open,
+  children,
+}): JSX.Element | null => {
+  if (!open) return null;
+  return (
+    <ClientPortal>
+      <div>{children}</div>
+    </ClientPortal>
+  );
 };

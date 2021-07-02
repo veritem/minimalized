@@ -1,4 +1,5 @@
 {
+  "name": "@veritem/minimalized",
   "version": "0.1.0",
   "license": "MIT",
   "main": "dist/index.js",
@@ -35,7 +36,6 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "minimalized",
   "author": "Makuza Mugabo Verite",
   "module": "dist/minimalized.esm.js",
   "size-limit": [
