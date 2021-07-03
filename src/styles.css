@@ -1,0 +1,3 @@
+.close__btn::focus {
+    outline: "none";
+}

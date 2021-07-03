@@ -1,15 +1,8 @@
-import React, {
-  FC,
-  HTMLAttributes,
-  ReactChild,
-  ReactPortal,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { FC, ReactPortal, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import './styles.css';
 
-interface Props {
+export interface Props {
   children: JSX.Element;
   open: boolean;
   close: () => void;
@@ -20,11 +13,11 @@ export function ClientPortal({
 }: {
   children: JSX.Element;
 }): ReactPortal | null {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement | any>(null);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    ref.current = document.querySelector('#__next');
+    ref.current = document.querySelector('#modal');
     setMounted(true);
   }, []);
 
@@ -34,11 +27,42 @@ export function ClientPortal({
 export const Minimalized: FC<Props> = ({
   open,
   children,
+  close,
 }): JSX.Element | null => {
   if (!open) return null;
   return (
     <ClientPortal>
-      <div>{children}</div>
+      <div
+        style={{
+          display: 'flex',
+          top: '0px',
+          bottom: '0px',
+          left: '0px',
+          zIndex: 999999,
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyItems: 'center',
+            height: '100vh',
+            width: '100vw',
+          }}
+        >
+          <div style={{ display: 'relative', background: '#fff' }}>
+            <button
+              className="close__btn"
+              onClick={() => close()}
+              style={{ position: 'absolute', right: '2rem', top: '2rem' }}
+            >
+              X
+            </button>
+            {children}
+          </div>
+        </div>
+      </div>
     </ClientPortal>
   );
 };
