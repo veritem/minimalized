@@ -1,6 +1,6 @@
 # Minimalized 
 
-A Tiny react component modal built with for simplicity and accessbility in mind
+A Tiny React modal component for nextjs built with simplicity and accessbility in mind
 
 ## Installation 
 

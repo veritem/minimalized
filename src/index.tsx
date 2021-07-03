@@ -1,5 +1,6 @@
 import React, { FC, ReactPortal, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import styles from './styles.module.css';
 
 export interface Props {
   children: JSX.Element;
@@ -32,12 +33,14 @@ export const Minimalized: FC<Props> = ({
   return (
     <ClientPortal>
       <div
+        className={styles.test}
         style={{
           display: 'flex',
           top: '0px',
           bottom: '0px',
           left: '0px',
           zIndex: 999999,
+          opacity: '0.2',
           backgroundColor: 'rgba(0, 0, 0, 0.8)',
         }}
       >
@@ -46,13 +49,13 @@ export const Minimalized: FC<Props> = ({
             display: 'flex',
             alignItems: 'center',
             justifyItems: 'center',
-            height: '100vh',
-            width: '100vw',
+            height: '100%',
+            width: '100%',
           }}
         >
           <div style={{ display: 'relative', background: '#fff' }}>
             <button
-              className="close__btn"
+              className={styles.test}
               onClick={() => close()}
               style={{ position: 'absolute', right: '2rem', top: '2rem' }}
             >

@@ -1,7 +1,9 @@
-import 'react-app-polyfill/ie11';
+/* import 'react-app-polyfill/ie11'; */
+
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Minimalized } from '../src/index';
+
+import { Minimalized } from '../.';
 import { useState } from 'react';
 
 const App = () => {
