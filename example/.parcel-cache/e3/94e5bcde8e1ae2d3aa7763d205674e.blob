@@ -1,4 +1,0 @@
-var global = require('../internals/global');
-var inspectSource = require('../internals/inspect-source');
-var WeakMap1 = global.WeakMap;
-module.exports = typeof WeakMap1 === 'function' && /native code/.test(inspectSource(WeakMap1));
