@@ -1,0 +1,93 @@
+'use strict';
+//This file contains the ES6 extensions to the core Promises/A+ API
+var Promise1 = require('./core.js');
+module.exports = Promise1;
+/* Static Functions */ var TRUE = valuePromise(true);
+var FALSE = valuePromise(false);
+var NULL = valuePromise(null);
+var UNDEFINED = valuePromise(undefined);
+var ZERO = valuePromise(0);
+var EMPTYSTRING = valuePromise('');
+function valuePromise(value) {
+    var p = new Promise1(Promise1._0);
+    p._V = 1;
+    p._W = value;
+    return p;
+}
+Promise1.resolve = function(value) {
+    if (value instanceof Promise1) return value;
+    if (value === null) return NULL;
+    if (value === undefined) return UNDEFINED;
+    if (value === true) return TRUE;
+    if (value === false) return FALSE;
+    if (value === 0) return ZERO;
+    if (value === '') return EMPTYSTRING;
+    if (typeof value === 'object' || typeof value === 'function') try {
+        var then = value.then;
+        if (typeof then === 'function') return new Promise1(then.bind(value));
+    } catch (ex) {
+        return new Promise1(function(resolve, reject) {
+            reject(ex);
+        });
+    }
+    return valuePromise(value);
+};
+var iterableToArray = function(iterable) {
+    if (typeof Array.from === 'function') {
+        // ES2015+, iterables exist
+        iterableToArray = Array.from;
+        return Array.from(iterable);
+    }
+    // ES5, only arrays and array-likes exist
+    iterableToArray = function(x) {
+        return Array.prototype.slice.call(x);
+    };
+    return Array.prototype.slice.call(iterable);
+};
+Promise1.all = function(arr) {
+    var args = iterableToArray(arr);
+    return new Promise1(function(resolve, reject) {
+        if (args.length === 0) return resolve([]);
+        var remaining = args.length;
+        function res(i, val) {
+            if (val && (typeof val === 'object' || typeof val === 'function')) {
+                if (val instanceof Promise1 && val.then === Promise1.prototype.then) {
+                    while(val._V === 3)val = val._W;
+                    if (val._V === 1) return res(i, val._W);
+                    if (val._V === 2) reject(val._W);
+                    val.then(function(val1) {
+                        res(i, val1);
+                    }, reject);
+                    return;
+                } else {
+                    var then = val.then;
+                    if (typeof then === 'function') {
+                        var p = new Promise1(then.bind(val));
+                        p.then(function(val1) {
+                            res(i, val1);
+                        }, reject);
+                        return;
+                    }
+                }
+            }
+            args[i] = val;
+            if ((--remaining) === 0) resolve(args);
+        }
+        for(var i = 0; i < args.length; i++)res(i, args[i]);
+    });
+};
+Promise1.reject = function(value) {
+    return new Promise1(function(resolve, reject) {
+        reject(value);
+    });
+};
+Promise1.race = function(values) {
+    return new Promise1(function(resolve, reject) {
+        iterableToArray(values).forEach(function(value) {
+            Promise1.resolve(value).then(resolve, reject);
+        });
+    });
+};
+/* Prototype Methods */ Promise1.prototype['catch'] = function(onRejected) {
+    return this.then(null, onRejected);
+};

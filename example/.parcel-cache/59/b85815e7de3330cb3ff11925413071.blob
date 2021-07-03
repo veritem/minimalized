@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Playground</title>
+  </head>
+
+  <body>
+    <div id="__next"></div>
+    <div id="root"></div>
+    <script src="/index.HASH_REF_b04db31bd960c20bd04f7ff921c43a6e.js"></script>
+  </body>
+</html>

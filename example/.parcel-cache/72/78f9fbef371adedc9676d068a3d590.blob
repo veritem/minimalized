@@ -1,0 +1,100 @@
+var helpers = require("../example/node_modules/.pnpm/@parcel+transformer-react-refresh-wrap@2.0.0-beta.3.1/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "ClientPortal", ()=>ClientPortal
+);
+parcelHelpers.export(exports, "Minimalized", ()=>Minimalized
+);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactDom = require("react-dom");
+var _stylesCss = require("./styles.css");
+var _s = $RefreshSig$();
+function ClientPortal({ children  }) {
+    _s();
+    const ref = _react.useRef(null);
+    const [mounted, setMounted] = _react.useState(false);
+    _react.useEffect(()=>{
+        ref.current = document.querySelector('#modal');
+        setMounted(true);
+    }, []);
+    return mounted ? /*#__PURE__*/ _reactDom.createPortal(children, ref.current) : null;
+}
+_s(ClientPortal, "na+ZokcoT2dT3sPeiiDWS6iuOJk=");
+_c = ClientPortal;
+const Minimalized = ({ open , children , close ,  })=>{
+    if (!open) return null;
+    return(/*#__PURE__*/ _reactDefault.default.createElement(ClientPortal, {
+        __source: {
+            fileName: "/home/veritem/dev/minimalized/src/index.tsx",
+            lineNumber: 34
+        },
+        __self: undefined
+    }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        style: {
+            display: 'flex',
+            top: '0px',
+            bottom: '0px',
+            left: '0px',
+            zIndex: 999999,
+            backgroundColor: 'rgba(0, 0, 0, 0.8)'
+        },
+        __source: {
+            fileName: "/home/veritem/dev/minimalized/src/index.tsx",
+            lineNumber: 35
+        },
+        __self: undefined
+    }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        style: {
+            display: 'flex',
+            alignItems: 'center',
+            justifyItems: 'center',
+            height: '100vh',
+            width: '100vw'
+        },
+        __source: {
+            fileName: "/home/veritem/dev/minimalized/src/index.tsx",
+            lineNumber: 45
+        },
+        __self: undefined
+    }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        style: {
+            display: 'relative',
+            background: '#fff'
+        },
+        __source: {
+            fileName: "/home/veritem/dev/minimalized/src/index.tsx",
+            lineNumber: 54
+        },
+        __self: undefined
+    }, /*#__PURE__*/ _reactDefault.default.createElement("button", {
+        className: "close__btn",
+        onClick: ()=>close()
+        ,
+        style: {
+            position: 'absolute',
+            right: '2rem',
+            top: '2rem'
+        },
+        __source: {
+            fileName: "/home/veritem/dev/minimalized/src/index.tsx",
+            lineNumber: 55
+        },
+        __self: undefined
+    }, "X"), children)))));
+};
+_c1 = Minimalized;
+var _c, _c1;
+$RefreshReg$(_c, "ClientPortal");
+$RefreshReg$(_c1, "Minimalized");
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
