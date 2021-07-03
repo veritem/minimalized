@@ -1,6 +1,5 @@
 import React, { FC, ReactPortal, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import './styles.css';
 
 export interface Props {
   children: JSX.Element;
