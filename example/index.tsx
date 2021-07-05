@@ -2,12 +2,14 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import '../dist/minimalized.cjs.development.css';
 
 import { Minimalized } from '../.';
 import { useState } from 'react';
 
 const App = () => {
-  const [open, setIsOpen] = useState<boolean>(false);
+  const [open, setIsOpen] = useState<boolean>(true);
+
   return (
     <section>
       <button onClick={() => setIsOpen(true)}>Open modal</button>

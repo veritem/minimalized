@@ -7,13 +7,15 @@ module.exports = {
   rollup(config, opts) {
     config.plugins.push(
       postcss({
+        module: true,
         plugins: [
           autoprefixer(),
           cssnano({
             preset: 'default',
           }),
         ],
-        inject: false,
+        inject: true,
+        sourceMap: true,
         // only write out CSS for the first bundle (avoids pointless extra files):
         extract: !!opts.writeMeta,
       })

@@ -30,34 +30,16 @@ export const Minimalized: FC<Props> = ({
   close,
 }): JSX.Element | null => {
   if (!open) return null;
+
   return (
     <ClientPortal>
-      <div
-        className={styles.test}
-        style={{
-          display: 'flex',
-          top: '0px',
-          bottom: '0px',
-          left: '0px',
-          zIndex: 999999,
-          opacity: '0.2',
-          backgroundColor: 'rgba(0, 0, 0, 0.8)',
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyItems: 'center',
-            height: '100%',
-            width: '100%',
-          }}
-        >
-          <div style={{ display: 'relative', background: '#fff' }}>
+      <div className={styles.main}>
+        <div className={styles.container} style={{}}>
+          <div className={styles.wrapper}>
             <button
-              className={styles.test}
               onClick={() => close()}
-              style={{ position: 'absolute', right: '2rem', top: '2rem' }}
+              className={styles.closeBtn}
+              style={{}}
             >
               X
             </button>
