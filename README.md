@@ -1,6 +1,7 @@
 # Minimalized 
 
-A Tiny React modal component for nextjs built with simplicity and accessbility in mind
+Tiny overlay component for React and Next.js apps
+
 
 ## Installation 
 
