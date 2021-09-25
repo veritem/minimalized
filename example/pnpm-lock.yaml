@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@types/react': 16.14.15
+  '@types/react': 17.0.24
   '@types/react-dom': 16.9.14
   parcel: 2.0.0-rc.0
   react-app-polyfill: ^1.0.6
@@ -11,7 +11,7 @@ dependencies:
   react-app-polyfill: 1.0.6
 
 devDependencies:
-  '@types/react': 16.14.15
+  '@types/react': 17.0.24
   '@types/react-dom': 16.9.14
   parcel: 2.0.0-rc.0
   typescript: 3.9.10
@@ -977,6 +977,14 @@ packages:
 
   /@types/react/16.14.15:
     resolution: {integrity: sha512-jOxlBV9RGZhphdeqJTCv35VZOkjY+XIEY2owwSk84BNDdDv2xS6Csj6fhi+B/q30SR9Tz8lDNt/F2Z5RF3TrRg==}
+    dependencies:
+      '@types/prop-types': 15.7.3
+      '@types/scheduler': 0.16.1
+      csstype: 3.0.8
+    dev: true
+
+  /@types/react/17.0.24:
+    resolution: {integrity: sha512-eIpyco99gTH+FTI3J7Oi/OH8MZoFMJuztNRimDOJwH4iGIsKV2qkGnk4M9VzlaVWeEEWLWSQRy0FEA0Kz218cg==}
     dependencies:
       '@types/prop-types': 15.7.3
       '@types/scheduler': 0.16.1
