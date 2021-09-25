@@ -4,11 +4,11 @@ specifiers:
   '@types/react': 16.14.15
   '@types/react-dom': 16.9.14
   parcel: 2.0.0-rc.0
-  react-app-polyfill: ^1.0.6
+  react-app-polyfill: ^2.0.0
   typescript: 3.9.10
 
 dependencies:
-  react-app-polyfill: 1.0.6
+  react-app-polyfill: 2.0.0
 
 devDependencies:
   '@types/react': 16.14.15
@@ -4195,9 +4195,9 @@ packages:
     engines: {node: '>= 0.6'}
     dev: true
 
-  /react-app-polyfill/1.0.6:
-    resolution: {integrity: sha512-OfBnObtnGgLGfweORmdZbyEz+3dgVePQBb3zipiaDsMHV1NpWm0rDFYIVXFV/AK+x4VIIfWHhrdMIeoTLyRr2g==}
-    engines: {node: '>=6'}
+  /react-app-polyfill/2.0.0:
+    resolution: {integrity: sha512-0sF4ny9v/B7s6aoehwze9vJNWcmCemAUYBVasscVr92+UYiEqDXOxfKjXN685mDaMRNF3WdhHQs76oTODMocFA==}
+    engines: {node: '>=10'}
     dependencies:
       core-js: 3.15.2
       object-assign: 4.1.1
